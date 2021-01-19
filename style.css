@@ -1,0 +1,76 @@
+body {
+  color: #1c59c4;
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  color: #0141b1;
+  display: block;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+ul {
+  font-family: "Raleway", sans-serif;
+  margin: 0 0 30px;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  display: block;
+  color: #1c59c4;
+  font-weight: 100;
+  line-height: 1;
+  height: 19px;
+  text-align: left;
+}
+i {
+  font-size: 40px;
+  color: #d86be2;
+}
+h2 {
+  color: #0141b1;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+h3 {
+  color: #0141b1;
+  font-family: "Raleway", sans-serif;
+  font-size: 12px;
+}
+form {
+  margin-bottom: 20px;
+}
+.weather-app {
+  border: 1px solid #0141b1;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.current-temperature {
+  color: #1c59c4;
+  font-size: 40px;
+  font-weight: 400;
+  user-select: none;
+  line-height: 1;
+}
+.current-temperature-box {
+  padding: 0 30px;
+}
+.units {
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  top: -15px;
+}
+.card {
+  padding: 20px;
+  background-color: transparent;
+  border-color: transparent;
+}
