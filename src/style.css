@@ -74,3 +74,14 @@ form {
   background-color: transparent;
   border-color: transparent;
 }
+.footer {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  font-size: 12px;
+}
+.footer a {
+  color: #d86be2;
+  text-decoration: none;
+}
