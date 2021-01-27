@@ -56,6 +56,22 @@ function formatTime(date) {
 let timeElement = document.querySelector("#current-time");
 timeElement.innerHTML = formatTime(currentTime);
 
+//Create timestamp for the forecasts
+
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
+
 // Display temperature in id="real-temperature" + h1 changing by clicking on pin
 
 function showTemperature(response) {
@@ -123,11 +139,33 @@ function searchrealcity(event) {
 let enteryourCity = document.querySelector("#entercity-form");
 enteryourCity.addEventListener("submit", searchrealcity);
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `<div class="col-2">
+                <h2>${formatHours(forecast.dt * 1000)}</h2>
+                <img src="http://openweathermap.org/img/wn/${
+                  forecast.weather[0].icon
+                }@2x.png" />
+                <h3>${Math.round(forecast.main.temp_max)}° | ${Math.round(
+      forecast.main.temp_min
+    )}°</h3>
+              </div>`;
+  }
+}
+
 function searchCity(city) {
   let apiKey = "7d7f0db622e0aaac041c916319ba774a";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeatherconditions);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 searchCity("Berlin");
