@@ -177,6 +177,7 @@ function searchCity(city) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
+// Update the weather forecasts
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -187,7 +188,7 @@ function handleSubmit(event) {
 let form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
 
-searchCity("Berlin");
+searchCity("Madrid");
 
 // Fahrenheit-Celsius convertion
 
