@@ -85,3 +85,9 @@ form {
   color: #d86be2;
   text-decoration: none;
 }
+li.first-letter {
+  text-transform: capitalize;
+}
+img {
+  font-size: 2px;
+}

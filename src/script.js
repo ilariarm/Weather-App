@@ -97,9 +97,17 @@ function showWeatherconditions(response) {
   );
   document.querySelector("#current-humidity").innerHTML =
     response.data.main.humidity;
-  document.querySelector("#current-wind").innerHTML = response.data.wind.speed;
+  document.querySelector("#current-wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].main;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchrealcity(event) {
