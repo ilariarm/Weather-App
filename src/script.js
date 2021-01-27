@@ -72,7 +72,7 @@ function formatHours(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-// Display temperature in id="real-temperature" + h1 changing by clicking on pin
+// Display temperature
 
 function showTemperature(response) {
   let temperature = document.querySelector("#real-temperature");
@@ -87,6 +87,7 @@ function showTemperature(response) {
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].main;
 }
+// Display temperature in my current position + forecasts
 
 function showmyPosition(position) {
   let latitude = position.coords.latitude;
@@ -96,6 +97,9 @@ function showmyPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
 
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function currentPosition(event) {
@@ -173,6 +177,15 @@ function searchCity(city) {
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayForecast);
 }
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#enter-realcity");
+  searchCity(cityInputElement.value);
+}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
 
 searchCity("Berlin");
 
