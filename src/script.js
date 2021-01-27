@@ -81,7 +81,9 @@ function showTemperature(response) {
   cityElement.innerHTML = response.data.name;
   document.querySelector("#current-humidity").innerHTML =
     response.data.main.humidity;
-  document.querySelector("#current-wind").innerHTML = response.data.wind.speed;
+  document.querySelector("#current-wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].main;
 }
@@ -124,6 +126,8 @@ function showWeatherconditions(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 function searchrealcity(event) {
@@ -138,6 +142,8 @@ function searchrealcity(event) {
 
 let enteryourCity = document.querySelector("#entercity-form");
 enteryourCity.addEventListener("submit", searchrealcity);
+
+// Forecasts functions
 
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
@@ -169,3 +175,26 @@ function searchCity(city) {
 }
 
 searchCity("Berlin");
+
+// Fahrenheit-Celsius convertion
+
+function convertFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#real-temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function convertCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#real-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let fahrenheitUnit = document.querySelector("#fahrenheit-unit");
+fahrenheitUnit.addEventListener("click", convertFahrenheit);
+
+let celsiusUnit = document.querySelector("#celsius-unit");
+celsiusUnit.addEventListener("click", convertCelsius);
+
+let celsiusTemperature = null;
