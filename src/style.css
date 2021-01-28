@@ -29,10 +29,6 @@ li {
   height: 19px;
   text-align: left;
 }
-i {
-  font-size: 40px;
-  color: #d86be2;
-}
 h2 {
   color: #0141b1;
   font-family: "Raleway", sans-serif;
@@ -52,7 +48,7 @@ form {
   padding: 15px;
   margin: 20px auto;
   max-width: 600px;
-  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  background-image: linear-gradient(to top, #f3dbf3 0%, #b4eaf0 100%);
 }
 .current-temperature {
   color: #1c59c4;
