@@ -1,4 +1,5 @@
 // Current day
+
 function formatDate(date) {
   let days = [
     "Sunday",
@@ -39,6 +40,7 @@ let currentTime = new Date();
 dateElement.innerHTML = formatDate(currentTime);
 
 // Current hour and minutes
+
 function formatTime(date) {
   let hours = date.getHours();
   if (hours < 10) {
